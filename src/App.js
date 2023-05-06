@@ -9,6 +9,7 @@ import NavBar from "./NavBar";
 import RosterPitchers from "./PitcherRoster";
 import RosterHitters from "./HitterRoster";
 import Leaderboard from "./Leaderboard";
+import "./PlayerStats.css";
 
 function App() {
   return (

@@ -1,6 +1,43 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
+import "./PlayerStats.css";
+
+const teamAbbreviations = {
+  "Arizona Diamondbacks": "ARI",
+  "Atlanta Braves": "ATL",
+  "Baltimore Orioles": "BAL",
+  "Boston Red Sox": "BOS",
+  "Chicago Cubs": "CHC",
+  "Chicago White Sox": "CWS",
+  "Cincinnati Reds": "CIN",
+  "Cleveland Guardians": "CLE",
+  "Colorado Rockies": "COL",
+  "Detroit Tigers": "DET",
+  "Houston Astros": "HOU",
+  "Kansas City Royals": "KC",
+  "Los Angeles Angels": "LAA",
+  "Los Angeles Dodgers": "LAD",
+  "Miami Marlins": "MIA",
+  "Milwaukee Brewers": "MIL",
+  "Minnesota Twins": "MIN",
+  "New York Mets": "NYM",
+  "New York Yankees": "NYY",
+  "Oakland Athletics": "OAK",
+  "Philadelphia Phillies": "PHI",
+  "Pittsburgh Pirates": "PIT",
+  "San Diego Padres": "SD",
+  "San Francisco Giants": "SF",
+  "Seattle Mariners": "SEA",
+  "St. Louis Cardinals": "STL",
+  "Tampa Bay Rays": "TB",
+  "Texas Rangers": "TEX",
+  "Toronto Blue Jays": "TOR",
+  "Washington Nationals": "WSH"
+};
+const getAbbreviation = (teamName) => {
+  return teamAbbreviations[teamName] || teamName;
+};
 
 const HitterStats = () => {
   const { playerId } = useParams();
@@ -29,29 +66,29 @@ const HitterStats = () => {
   } else {
     currentTeam = { id: null, name: "N/A" };
   }
-  // Get player's team ID
-  const teamID = hittingStats.splits.find((split) => split.season === "2023").team.id;
+  
 
   // Get the player's position
   const primaryPosition = player.primaryPosition.name;
 
-  const player_id = player.id;
+
 
 
 
 
 
   return (
+    <div className="stats-container">
     <div>
       <div style={{ display: "flex", alignItems: "center" }}>
-  {/* Placeholder for player image */}
-  <img src={`https://content.mlb.com/images/headshots/current/60x60/${playerId}.png`} alt="player" style={{ marginRight: "1rem" }} />
+  {/* Player image */}
+  <img src={`https://content.mlb.com/images/headshots/current/60x60/${playerId}.png`} alt="player" style={{ marginRight: "1.5rem", marginLeft: "6rem"}} />
 
-  <h1>
+  <h1 style={{color:"white"}}>
           {/* Player name */}
           {player.fullName}
 
-          <span style={{ fontSize: "0.8rem", color: "gray", marginLeft: "1rem" }}>
+          <span style={{ fontSize: "1rem", color: "White", marginLeft: "1rem" }}>
             {primaryPosition} |{" "}
             {currentTeam ? (
               <Link to={`/team-hitters/${currentTeam.id}`}>{currentTeam.name}</Link>
@@ -63,7 +100,8 @@ const HitterStats = () => {
         </h1>
 
         {/* Player stats summary */}
-        <div style={{ marginLeft: "auto" }}>
+        <div style={{ marginLeft: "auto", paddingLeft: "3rem", color: "white", paddingRight: "20rem"}}>
+
           <span>
             B/T: {player.batSide.description}/{player.pitchHand.description},
             Age: {player.currentAge}, Height: {player.height},
@@ -102,10 +140,10 @@ const HitterStats = () => {
                                 {split.team ? (
                                     <Link to={`/team-pitchers/${split.team.id}`}>
                                         <img src={`https://www.mlbstatic.com/team-logos/${split.team.id}.svg`} alt={split.team.name} width="20" height="20" style={{ marginRight: "0.5rem" }} />
-                                        {split.team.name}
+                                        {getAbbreviation(split.team.name)}
                                     </Link>
                                 ) : (
-                                    "N/A"
+                                    "Two or more teams"
                                 )}
                             </td>
               <td>{split.stat.gamesPlayed}</td>
@@ -127,6 +165,7 @@ const HitterStats = () => {
           ))}
         </tbody>
       </table>
+    </div>
     </div>
   );
 };

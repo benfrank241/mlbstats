@@ -3,6 +3,42 @@ import axios from 'axios';
 import './Standings.css';
 import { useParams, Link } from "react-router-dom";
 
+const teamAbbreviations = {
+    "Arizona Diamondbacks": "ARI",
+    "Atlanta Braves": "ATL",
+    "Baltimore Orioles": "BAL",
+    "Boston Red Sox": "BOS",
+    "Chicago Cubs": "CHC",
+    "Chicago White Sox": "CWS",
+    "Cincinnati Reds": "CIN",
+    "Cleveland Guardians": "CLE",
+    "Colorado Rockies": "COL",
+    "Detroit Tigers": "DET",
+    "Houston Astros": "HOU",
+    "Kansas City Royals": "KC",
+    "Los Angeles Angels": "LAA",
+    "Los Angeles Dodgers": "LAD",
+    "Miami Marlins": "MIA",
+    "Milwaukee Brewers": "MIL",
+    "Minnesota Twins": "MIN",
+    "New York Mets": "NYM",
+    "New York Yankees": "NYY",
+    "Oakland Athletics": "OAK",
+    "Philadelphia Phillies": "PHI",
+    "Pittsburgh Pirates": "PIT",
+    "San Diego Padres": "SD",
+    "San Francisco Giants": "SF",
+    "Seattle Mariners": "SEA",
+    "St. Louis Cardinals": "STL",
+    "Tampa Bay Rays": "TB",
+    "Texas Rangers": "TEX",
+    "Toronto Blue Jays": "TOR",
+    "Washington Nationals": "WSH"
+};
+const getAbbreviation = (teamName) => {
+    return teamAbbreviations[teamName] || teamName;
+};
+
 function Standings() {
     const [ALEast, setStandings0] = useState([]);
     const [ALCentral, setStandings1] = useState([]);
@@ -27,8 +63,11 @@ function Standings() {
             const data5 = response.data.records[5].teamRecords; //0-5 changes the divison
             setStandings5(data5); // update state with the received data
         };
+
         fetchData();
     }, []);
+
+
 
 
 
@@ -53,7 +92,8 @@ function Standings() {
                             {ALWest.map(team => (
                                 <tr key={team.team.id}>
                                     <Link to={`/team-hitters/${team.team.id}`}>
-                                    <td>{team.team.name}</td>
+                                        <img src={`https://www.mlbstatic.com/team-logos/${team.team.id}.svg`} alt={team.team.name} width="20" height="20" style={{ marginRight: "0.5rem" }} />
+                                        <span>{getAbbreviation(team.team.name)}</span>
                                     </Link>
                                     <td>{team.wins}</td>
                                     <td>{team.losses}</td>
@@ -84,7 +124,8 @@ function Standings() {
                             {NLWest.map(team => (
                                 <tr key={team.team.id}>
                                     <Link to={`/team-hitters/${team.team.id}`}>
-                                    <td>{team.team.name}</td>
+                                        <img src={`https://www.mlbstatic.com/team-logos/${team.team.id}.svg`} alt={team.team.name} width="20" height="20" style={{ marginRight: "0.5rem" }} />
+                                        <span>{getAbbreviation(team.team.name)}</span>
                                     </Link>
                                     <td>{team.wins}</td>
                                     <td>{team.losses}</td>
@@ -117,7 +158,8 @@ function Standings() {
                             {ALCentral.map(team => (
                                 <tr key={team.team.id}>
                                     <Link to={`/team-hitters/${team.team.id}`}>
-                                    <td>{team.team.name}</td>
+                                        <img src={`https://www.mlbstatic.com/team-logos/${team.team.id}.svg`} alt={team.team.name} width="20" height="20" style={{ marginRight: "0.5rem" }} />
+                                        <span>{getAbbreviation(team.team.name)}</span>
                                     </Link>
                                     <td>{team.wins}</td>
                                     <td>{team.losses}</td>
@@ -148,7 +190,8 @@ function Standings() {
                             {NLCentral.map(team => (
                                 <tr key={team.team.id}>
                                     <Link to={`/team-hitters/${team.team.id}`}>
-                                    <td>{team.team.name}</td>
+                                        <img src={`https://www.mlbstatic.com/team-logos/${team.team.id}.svg`} alt={team.team.name} width="20" height="20" style={{ marginRight: "0.5rem" }} />
+                                        <span>{getAbbreviation(team.team.name)}</span>
                                     </Link>
                                     <td>{team.wins}</td>
                                     <td>{team.losses}</td>
@@ -181,7 +224,8 @@ function Standings() {
                             {ALEast.map(team => (
                                 <tr key={team.team.id}>
                                     <Link to={`/team-hitters/${team.team.id}`}>
-                                    <td>{team.team.name}</td>
+                                        <img src={`https://www.mlbstatic.com/team-logos/${team.team.id}.svg`} alt={team.team.name} width="20" height="20" style={{ marginRight: "0.5rem" }} />
+                                        <span>{getAbbreviation(team.team.name)}</span>
                                     </Link>
                                     <td>{team.wins}</td>
                                     <td>{team.losses}</td>
@@ -213,7 +257,8 @@ function Standings() {
                             {NLEast.map(team => (
                                 <tr key={team.team.id}>
                                     <Link to={`/team-hitters/${team.team.id}`}>
-                                    <td>{team.team.name}</td>
+                                        <img src={`https://www.mlbstatic.com/team-logos/${team.team.id}.svg`} alt={team.team.name} width="20" height="20" style={{ marginRight: "0.5rem" }} />
+                                        <span>{getAbbreviation(team.team.name)}</span>
                                     </Link>
                                     <td>{team.wins}</td>
                                     <td>{team.losses}</td>
