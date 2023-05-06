@@ -110,6 +110,10 @@ def leaderboard():
         return jsonify(data)
     else:
         return "Error: could not retrieve standings", 500
+    
+@app.route('/', methods=['GET'])
+def home():
+    return "<h1>MLB Stats API</h1><p>This site is a prototype API for MLB stats.</p>"
 
 
     
