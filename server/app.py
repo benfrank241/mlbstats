@@ -3,6 +3,7 @@ from flask_cors import CORS
 import requests
 import feedparser
 from bs4 import BeautifulSoup
+import json
 
 app = Flask(__name__)
 CORS(app)
@@ -68,7 +69,7 @@ def get_news():
     soup = BeautifulSoup(response.content, 'xml')
 
     articles = []
-    date = ""
+
 
     for item in soup.find_all('item'):
         title = item.find('title').text
