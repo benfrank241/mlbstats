@@ -26,9 +26,38 @@ def get_player_info(player_id):
 
 @app.route('/player/<player_id>/stats')
 def get_player_stats(player_id):
-    url = "https://statsapi.mlb.com/api/v1/people/" + player_id + "?hydrate=stats(group=[hitting,pitching,fielding],type=[yearByYear])"
+    url = "https://statsapi.mlb.com/api/v1/people/" + player_id + "?hydrate=stats(group=[hitting,pitching],type=[yearByYear])"
 
     response = requests.get(url)
+
+    if response.status_code == 200:
+        # The request was successful
+        data = response.json()
+        return jsonify(data)
+    else:
+        # There was an error
+        return "Error: " + str(response.status_code)
+    
+
+#get career stats    
+@app.route('/player/<player_id>/career/hitting')
+def get_player_career(player_id):
+
+    response = requests.get(f"https://statsapi.mlb.com/api/v1/people/" + player_id + "?hydrate=stats(group=[hitting],type=[career])")
+
+    if response.status_code == 200:
+        # The request was successful
+        data = response.json()
+        return jsonify(data)
+    else:
+        # There was an error
+        return "Error: " + str(response.status_code)
+    
+#get career stats    
+@app.route('/player/<player_id>/career/pitching')
+def get_player_career_pitcher(player_id):
+
+    response = requests.get(f"https://statsapi.mlb.com/api/v1/people/" + player_id + "?hydrate=stats(group=[pitching],type=[career])")
 
     if response.status_code == 200:
         # The request was successful

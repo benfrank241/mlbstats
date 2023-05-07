@@ -42,6 +42,7 @@ const getAbbreviation = (teamName) => {
 const HitterStats = () => {
   const { playerId } = useParams();
   const [player, setPlayer] = useState(null);
+  const [careerStats, setCareerStats] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -52,6 +53,15 @@ const HitterStats = () => {
 
     fetchData();
   }, [playerId]);
+
+   useEffect(() => {
+        const fetchCareerData = async () => {
+            const response = await axios.get(`http://localhost:5000/player/${playerId}/career/hitting`);
+            setCareerStats(response.data.people[0]);
+            console.log(response.data.people[0])
+        };
+        fetchCareerData();
+    }, [playerId]);
 
   if (!player) {
     return <div>Loading player stats...</div>;
@@ -67,22 +77,15 @@ const HitterStats = () => {
     currentTeam = { id: null, name: "N/A" };
   }
   
-
   // Get the player's position
   const primaryPosition = player.primaryPosition.name;
-
-
-
-
-
-
 
   return (
     <div className="stats-container">
     <div>
       <div style={{ display: "flex", alignItems: "center" }}>
   {/* Player image */}
-  <img src={`https://content.mlb.com/images/headshots/current/60x60/${playerId}.png`} alt="player" style={{ marginRight: "1.5rem", marginLeft: "6rem"}} />
+  <img src={`https://content.mlb.com/images/headshots/current/60x60/${playerId}@2x.png`} alt="player" style={{ marginRight: "1.5rem", marginLeft: "6rem"}} />
 
   <h1 style={{color:"white"}}>
           {/* Player name */}
@@ -100,15 +103,22 @@ const HitterStats = () => {
         </h1>
 
         {/* Player stats summary */}
-        <div style={{ marginLeft: "auto", paddingLeft: "3rem", color: "white", paddingRight: "20rem"}}>
-
-          <span>
-            B/T: {player.batSide.description}/{player.pitchHand.description},
-            Age: {player.currentAge}, Height: {player.height},
-            Weight: {player.weight}, Year Drafted: {player.draftYear || "Not Drafted"}
-          </span>
-
-        </div>
+        <div className="player-stats-summary">
+  <div className="player-stats-row">
+    <span className="player-stats-label">B/T:</span>
+    <span className="player-stats-value">{player.batSide.description}/{player.pitchHand.description}</span>
+    <span className="player-stats-label">Age:</span>
+    <span className="player-stats-value">{player.currentAge}</span>
+    <span className="player-stats-label">Height:</span>
+    <span className="player-stats-value">{player.height}</span>
+  </div>
+  <div className="player-stats-row">
+    <span className="player-stats-label">Weight:</span>
+    <span className="player-stats-value">{player.weight} lbs</span>
+    <span className="player-stats-label">Year Drafted:</span>
+    <span className="player-stats-value">{player.draftYear || "Not Drafted"}</span>
+  </div>
+</div>
       </div>
       <table>
         <thead>
@@ -138,7 +148,7 @@ const HitterStats = () => {
               <td>{split.season}</td>
               <td>
                                 {split.team ? (
-                                    <Link to={`/team-pitchers/${split.team.id}`}>
+                                    <Link to={`/team-hitters/${split.team.id}`}>
                                         <img src={`https://www.mlbstatic.com/team-logos/${split.team.id}.svg`} alt={split.team.name} width="20" height="20" style={{ marginRight: "0.5rem" }} />
                                         {getAbbreviation(split.team.name)}
                                     </Link>
@@ -164,8 +174,37 @@ const HitterStats = () => {
             </tr>
           ))}
         </tbody>
+         {careerStats ? (
+    <tfoot>
+        <tr>
+            <td>Career</td>
+            <td></td>
+            <td>{careerStats.stats[0].splits[0].stat.gamesPlayed}</td>
+            <td>{careerStats.stats[0].splits[0].stat.plateAppearances}</td>
+            <td>{careerStats.stats[0].splits[0].stat.atBats}</td>
+            <td>{careerStats.stats[0].splits[0].stat.avg}</td>
+            <td>{careerStats.stats[0].splits[0].stat.runs}</td>
+            <td>{careerStats.stats[0].splits[0].stat.hits}</td>
+            <td>{careerStats.stats[0].splits[0].stat.doubles}</td>
+            <td>{careerStats.stats[0].splits[0].stat.triples}</td>
+            <td>{careerStats.stats[0].splits[0].stat.homeRuns}</td>
+            <td>{careerStats.stats[0].splits[0].stat.rbi}</td>
+            <td>{careerStats.stats[0].splits[0].stat.stolenBases}</td>
+            <td>{careerStats.stats[0].splits[0].stat.baseOnBalls}</td>
+            <td>{careerStats.stats[0].splits[0].stat.obp}</td>
+            <td>{careerStats.stats[0].splits[0].stat.slg}</td>
+            <td>{careerStats.stats[0].splits[0].stat.ops}</td>
+        </tr>
+    </tfoot>
+) : null}
+
       </table>
     </div>
+    {player.fullName === 'Shohei Ohtani' ? (
+  <button onClick={() => window.location.href = `/pitcher-stats/${playerId}`}>
+    Ohtani button
+  </button>
+) : null}
     </div>
   );
 };

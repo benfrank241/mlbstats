@@ -59,6 +59,10 @@ tr:nth-child(even) {
 tr:nth-child(odd) {
   background-color: #ddd;
 }
+tfoot tr {
+  border-top: 2px solid black;
+}
+
 
 /* Nav bar styling */
 nav {
@@ -115,5 +119,51 @@ a:hover {
 
 body {
   background-color: #244D87;
+  font-family: 'IBM Plex Sans', sans-serif;  
 }
  
+.player-stats-summary {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  color: white;
+  padding-left: 20%;
+  padding-right: 10%;
+}
+
+
+.player-stats-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0.5rem;
+}
+
+.player-stats-label {
+  color: #3E9FCA;
+  font-size: 0.8em;
+  font-weight: bold;
+  margin-right: 0.5rem;
+}
+
+.player-stats-value {
+  font-size: 1em;
+  font-weight: normal;
+}
+
+button {
+  background-color: var(--background-secondary);
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 5px;
+  margin-top: 1rem;
+  margin-left: 6rem;
+}
+
+button:hover {
+  cursor: pointer;
+  background-color: #3E9FCA;
+}
+
+
+
