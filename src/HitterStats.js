@@ -83,9 +83,9 @@ const HitterStats = () => {
   return (
     <div className="stats-container">
     <div>
-      <div style={{ display: "flex", alignItems: "center" }}>
+      <div style={{ display: "flex", alignItems: "center", marginLeft: "10%" }}>
   {/* Player image */}
-  <img src={`https://content.mlb.com/images/headshots/current/60x60/${playerId}@2x.png`} alt="player" style={{ marginRight: "1.5rem", marginLeft: "6rem"}} />
+  <img src={`https://content.mlb.com/images/headshots/current/60x60/${playerId}@2x.png`} alt="player" style={{ marginRight: "1.5rem"}} />
 
   <h1 style={{color:"white"}}>
           {/* Player name */}
