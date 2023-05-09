@@ -163,5 +163,87 @@ button:hover {
   background-color: #3E9FCA;
 }
 
+.rosterbutton {
+  display: flex;
+  justify-content: center;
+}
+
+.rosterbutton > div {
+  position: relative;
+  width: 300px;
+  height: 100px;
+  background-color: white;
+  border-radius: 50px;
+  overflow: hidden;
+}
+
+.rosterbutton > div > div:nth-child(1) {
+  position: absolute;
+  top: 10%;
+  left: 10%;
+  width: 80%;
+  height: 80%;
+  background-color: white;
+  border-radius: 50%;
+}
+
+.rosterbutton > div > div:nth-child(2) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background-color: white;
+  border-radius: 50px;
+}
+
+.rosterbutton > div > div:nth-child(2) > a {
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  color: #3E9FCA;
+}
+
+.rosterbutton > div > div:nth-child(3) {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 50%;
+  height: 100%;
+  background-color: #3E9FCA;
+  border-radius: 50px;
+}
+
+.rosterbutton > div > div:nth-child(3) > a {
+  text-decoration: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  color: white;
+  position: relative;
+  left: calc(-50% + 75px);
+}
+
+.rosterbutton > div > div:nth-child(2):hover {
+  background-color: #3E9FCA;
+}
+
+.rosterbutton > div > div:nth-child(2):hover > a {
+  color: white;
+}
+
+.rosterbutton > div > div:nth-child(3):hover {
+  background-color: white;
+}
+
+.rosterbutton > div > div:nth-child(3):hover > a {
+  color: #3E9FCA;
+}
+
 
 

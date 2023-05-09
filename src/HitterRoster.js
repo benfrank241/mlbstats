@@ -94,38 +94,77 @@ const RosterHitters = () => {
   // Get the team name
   const teamName = roster[0].person.stats[0].splits[0].team.name;
 
+  function getOrdinalSuffix(number) {
+    const suffixes = ["th", "st", "nd", "rd"];
+    const lastDigit = number % 10;
+    const secondLastDigit = Math.floor(number / 10) % 10;
+
+    if (secondLastDigit === 1) {
+      return `${number}th`;
+    } else if (lastDigit <= 3) {
+      return `${number}${suffixes[lastDigit]}`;
+    } else {
+      return `${number}th`;
+    }
+  }
+
+
   return (
     <div>
-      <div className="stats-container">
-        <div style={{ display: "flex", alignItems: "center", marginLeft: "11%", marginTop: "1%" }}>
+      <div className="stats-container" >
+        <div style={{ display: "flex", alignItems: "center", marginLeft: "11%", marginRight: "1%", marginTop: "1%", marginBottom: "1%" }}>
           {/* Player image */}
           <img src={`https://www.mlbstatic.com/team-logos/${teamId}.svg`} alt="player" style={{
             marginRight: "1.5rem",
-            height: "80px",
-            borderRadius: "50%",
+            height: "100px",
+            width: "100px",
+            borderRadius: "20%",
             backgroundColor: "white",
-            padding: "5px"
+            padding: "5px",
+            objectFit: "contain"
           }} />
-
-          <h1 style={{ color: "white" }}>
+          <div style={{ color: "white" }}>
             {/* Team name */}
-            {teamName} 
-          </h1>
-          <div style={{color: "white"}}>
-            {/* Team record */}
-            {standings.divisionRank} in {divisionMap[teamDivisions[teamName]]}
-          {standings.wins} - {standings.losses} ({standings.winningPercentage}) • ({standings.sportGamesBack} GB)
+            <h1 style={{ marginBottom: 0 }}>{teamName}</h1>
 
+            {/* Division rank and record */}
+            <div style={{ display: "flex", alignItems: "center" }}>
+              <span style={{ marginRight: "1rem", color: "#3E9FCA" }}>
+                {getOrdinalSuffix(standings.divisionRank)} in {divisionMap[teamDivisions[teamName]]}
+              </span>
+              <span style={{ fontWeight: "bold" }}>
+                {standings.wins}-{standings.losses} ({standings.winningPercentage}) • {standings.sportGamesBack} GB
+              </span>
+            </div>
+            </div>
+            
+              <div style={{ display: "flex", justifyContent: "center", right:"10%" }}>
+                <div style={{ position: "relative", width: "200px", height: "70px", backgroundColor: "white", borderRadius: "50px", overflow: "hidden", marginBottom: "2rem" }}>
+                  {/* Interior oval on the hitter side */}
+                  <div style={{ position: "absolute", top: "10%", left: "10%", width: "80%", height: "80%", backgroundColor: "white", borderRadius: "50%" }}></div>
+
+                  {/* Blue oval highlighting the "View Hitters" link */}
+                  <div style={{ position: "absolute", top: 0, left: 0, width: "50%", height: "100%", backgroundColor: "#3E9FCA", borderRadius: "50px" }}>
+                    {/* "View Hitters" link */}
+                    <Link to={`/team-hitters/${teamId}`} style={{ textDecoration: "none", display: "flex", justifyContent: "center", alignItems: "center", width: "100%", height: "100%", color: "white" }}>
+                      <span style={{ fontSize: "1.2rem", fontWeight: "bold" }}>Hitters</span>
+                    </Link>
+                  </div>
+
+                  {/* Blue oval highlighting the "View Pitchers" link */}
+                  <div style={{ position: "absolute", top: 0, left: "50%", width: "50%", height: "100%", backgroundColor: "white", borderRadius: "50px" }}>
+                    {/* "View Pitchers" link */}
+                    <Link to={`/team-pitchers/${teamId}`} style={{ textDecoration: "none", display: "flex", justifyContent: "center", alignItems: "center", width: "100%", height: "100%", color: "#3E9FCA", position: "relative", left: "calc(-65% + 75px)"}}>
+                      <span style={{ fontSize: "1.2rem", fontWeight: "bold" }}>Pitchers</span>
+                    </Link>
+                  </div>
+              
+            </div>
           </div>
         </div>
       </div>
+      <div></div>
       <div>
-
-      </div>
-      <div>
-        <Link to={`/team-pitchers/${teamId}`}>
-          <button>View Pitchers</button>
-        </Link>
         <table>
           <thead>
             <tr>
