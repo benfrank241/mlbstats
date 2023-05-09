@@ -1,9 +1,40 @@
 .standings-wrapper {
-    display: flex;
-  }
+  display: flex;
+  font-size: 0.7em;
+
+}
+
+.standings-table table {
+  width: 85%;
+  border-collapse: collapse;
+  text-align: center;
+  padding: 1rem;
+  margin-left: 7%;
+
+}
+
+.standings-table th,
+.standings-table td {
+  padding: 0.5rem;
+  font-size: 11px;
+}
+
+.standings-table th:first-child,
+.standings-table td:first-child {
+  width: 20%;
+  text-align: left;
+}
+
+.standings-table th:not(:first-child),
+.standings-table td:not(:first-child) {
+  width: 5%;
+}
+
+.standings-table h2{
+  color: #3E9FCA;
+  text-align: center;
+}
   
-  .standings-table {
-    float: left;
-    margin-right: 20px;
-  }
+
+  
   

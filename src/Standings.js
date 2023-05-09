@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Standings.css';
 import { useParams, Link } from "react-router-dom";
+import './PlayerStats.css'
 
 const teamAbbreviations = {
     "Arizona Diamondbacks": "ARI",
@@ -67,10 +68,6 @@ function Standings() {
         fetchData();
     }, []);
 
-
-
-
-
     return (
         <div className="standings-wrapper">
             <div className="standings-table-pair">
@@ -92,7 +89,7 @@ function Standings() {
                             {ALWest.map(team => (
                                 <tr key={team.team.id}>
                                     <Link to={`/team-hitters/${team.team.id}`}>
-                                        <img src={`https://www.mlbstatic.com/team-logos/${team.team.id}.svg`} alt={team.team.name} width="20" height="20" style={{ marginRight: "0.5rem" }} />
+                                        <img src={`https://www.mlbstatic.com/team-logos/${team.team.id}.svg`} alt={team.team.name} width="20" height="20" style={{ marginRight: "0.5rem"}} />
                                         <span>{getAbbreviation(team.team.name)}</span>
                                     </Link>
                                     <td>{team.wins}</td>

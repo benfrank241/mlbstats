@@ -13,6 +13,8 @@
   --nav-bar-color: #204377;
   --background-primary: #244D87;
   --background-secondary: #3E9FCA;
+  max-width: 1200px;
+  margin: 0 auto;
 }
 
 
@@ -24,6 +26,7 @@ table {
   margin-bottom: 1rem;
   margin-left: 10%;
   margin-right: 5rem;
+
 }
 
 th {

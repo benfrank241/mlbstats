@@ -5,8 +5,11 @@
   }
   
   .news-article {
-    width: 200px;
+    width: 40%;
     margin-right: 10px;
+    margin-left: 10px;
+    margin-top: 0%;
+    background-color: white;
   }
   
   .news-article img {
@@ -16,5 +19,23 @@
   
   .news-article h2 {
     font-size: 16px;
+    color: #244D87;
+    text-align: left;
+    padding-right: 10px;
+    padding-left: 10px;
   }
+  
+  .news-article p {
+    font-size: 12px;
+    padding-right: 10px;
+    padding-left: 10px;
+  }
+  .news-wrapper h1 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 1%;
+    margin-top: 0%;
+    color: white;
+  }
+  
   
