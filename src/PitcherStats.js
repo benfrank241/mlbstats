@@ -219,7 +219,7 @@ const PitcherStats = () => {
         </div>
         {player.fullName === 'Shohei Ohtani' ? (
   <button onClick={() => window.location.href = `/hitter-stats/${playerId}`}>
-    Ohtani button
+    Hitting Stats
   </button>
 ) : null}
         </div>

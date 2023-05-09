@@ -80,16 +80,7 @@ def standings():
         return "Error: could not retrieve standings", 500
     
 
-@app.route('/standings/testing', methods=['GET'])
-def standing():
-    url = f"https://statsapi.mlb.com/api/v1/standings?leagueId=103,104&division=AL%20East"
-    response = requests.get(url)
-    if response.status_code == 200:
-        data = response.json()
-      
-        return jsonify(data)
-    else:
-        return "Error: could not retrieve standings", 500
+    
     
 
 @app.route('/news')
@@ -127,7 +118,7 @@ def roster(team_id):
       
         return jsonify(data)
     else:
-        return "Error: could not retrieve standings", 500
+        return "Error: could not retrieve roster", 500
 
 @app.route('/leaderboard', methods=['GET'])
 def leaderboard():
@@ -138,7 +129,7 @@ def leaderboard():
       
         return jsonify(data)
     else:
-        return "Error: could not retrieve standings", 500
+        return "Error: could not retrieve leaderboard", 500
     
 @app.route('/', methods=['GET'])
 def home():

@@ -20,8 +20,10 @@ const RosterPitchers = () => {
     return <div>Loading roster...</div>;
   }
 
-  // Filter roster to show only pitchers
-  const pitchers = roster.filter(player => player.position.abbreviation === 'P');
+
+  // Filter roster to show only pitchers and two-way players
+  const pitchers = roster.filter(player => player.position.abbreviation === 'P' || player.position.abbreviation === 'TWP');
+
 
   return (
     <div>
@@ -31,7 +33,9 @@ const RosterPitchers = () => {
       <table>
         <thead>
           <tr>
-            <th>Name</th>
+            <th>Pos</th>
+            <th>#</th>
+            <th>Pitcher</th>
             <th>Age</th>
             <th>T</th>
             <th>IP</th>
@@ -50,10 +54,21 @@ const RosterPitchers = () => {
         <tbody>
           {pitchers.map((player) => (
             <tr key={player.person.id}>
-              <Link to={`/pitcher-stats/${player.person.id}`}>
-              <img src={`https://content.mlb.com/images/headshots/current/60x60/${player.person.id}.png`} alt="player" style={{ marginRight: "1rem" }} />
-                {player.person.fullName}
-              </Link>
+              <td>{player.position.abbreviation}</td>
+              <td>{player.jerseyNumber}</td>
+              <td style={{ display: "flex", alignItems: "center", padding: "0px", color: "blue" }}>
+                <img
+                  src={`https://content.mlb.com/images/headshots/current/60x60/${player.person.id}.png`}
+                  alt="player"
+                  style={{ marginRight: "1rem", height: "50px", border: "none" }}
+                />
+                <Link
+                  to={`/pitcher-stats/${player.person.id}`}
+                  style={{ textDecoration: "none", color: "inherit", fontSize: "1rem" }}
+                >
+                  {player.person.fullName}
+                </Link>
+              </td>
               <td>{player.person.currentAge}</td>
               <td>{player.person.pitchHand.code}</td>
               <td>{player.person.stats && player.person.stats[0].splits && player.person.stats[0].splits[0].stat && player.person.stats[0].splits[0].stat.inningsPitched}</td>
