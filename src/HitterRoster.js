@@ -9,7 +9,7 @@ const teamDivisions = {
   "Tampa Bay Rays": 0,
   "Toronto Blue Jays": 0,
   "Chicago White Sox": 1,
-  "Cleveland Indians": 1,
+  "Cleveland Guardians": 1,
   "Detroit Tigers": 1,
   "Kansas City Royals": 1,
   "Minnesota Twins": 1,

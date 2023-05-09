@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, Link } from "react-router-dom";
 
+
 const Leaderboard = () => {
     const [hitsLeaders, setHitsLeaders] = useState([]);
     const [hrLeaders, setHrLeaders] = useState([]);
@@ -11,6 +12,8 @@ const Leaderboard = () => {
     const [eraLeaders, setEraLeaders] = useState([]);
     const [avgLeaders, setAvgLeaders] = useState([]);
     const [savesLeaders, setSavesLeaders] = useState([]);
+    const [opsLeaders, setOpsLeaders] = useState([]);
+    const [winsLeaders, setWinsLeaders] = useState([]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -23,6 +26,8 @@ const Leaderboard = () => {
             setEraLeaders(response.data.leagueLeaders[14].leaders);
             setAvgLeaders(response.data.leagueLeaders[16].leaders);
             setSavesLeaders(response.data.leagueLeaders[19].leaders);
+            setOpsLeaders(response.data.leagueLeaders[20].leaders);
+            setWinsLeaders(response.data.leagueLeaders[22].leaders);
         };
 
         fetchData();
@@ -30,8 +35,8 @@ const Leaderboard = () => {
 
     return (
         <div>
-            <h1>Hit Leaders</h1>
-            <table>
+            <div style={{ display: "flex" }}>
+            <table style={{ display: "inline-block", marginRight: "20px", marginTop: "3%" }}>
                 <thead>
                     <tr>
                         <th>Rank</th>
@@ -63,9 +68,7 @@ const Leaderboard = () => {
                     ))}
                 </tbody>
             </table>
-
-            <h1>Home Run Leaders</h1>
-            <table>
+            <table style={{ display: "inline-block", marginRight: "20px", marginTop: "3%" }}>
                 <thead>
                     <tr>
                         <th>Rank</th>
@@ -97,8 +100,9 @@ const Leaderboard = () => {
                     ))}
                 </tbody>
             </table>
-            <h1>Stolen Base Leaders</h1>
-            <table>
+            </div>
+            <div style={{ display: "flex" }}>
+            <table style={{ display: "inline-block", marginRight: "20px", marginTop: "3%" }}>
                 <thead>
                     <tr>
                         <th>Rank</th>
@@ -130,107 +134,7 @@ const Leaderboard = () => {
                     ))}
                 </tbody>
             </table>
-            <h1>Rbi Leaders</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Rank</th>
-                        <th>Player Name</th>
-                        <th>Team</th>
-                        <th>RBI</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {rbiLeaders.map((leader, index) => (
-                        <tr key={index}>
-                            <td>{leader.rank}</td>
-                            <Link to={`/hitter-stats/${leader.person.id}`}>
-                                <img src={`https://content.mlb.com/images/headshots/current/60x60/${leader.person.id}.png`} alt="player" style={{ marginRight: "1rem" }} />
-                                <td>{leader.person.fullName}</td>
-                            </Link>
-                            <td>
-                                {leader.team ? (
-                                    <Link to={`/team-pitchers/${leader.team.id}`}>
-                                        <img src={`https://www.mlbstatic.com/team-logos/${leader.team.id}.svg`} alt={leader.team.id} width="20" height="20" style={{ marginRight: "0.5rem" }} />
-                                        {leader.team.abbreviation}
-                                    </Link>
-                                ) : (
-                                    "N/A"
-                                )}
-                            </td>
-                            <td>{leader.value}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-            <h1>Strikeouts Leaders</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Rank</th>
-                        <th>Player Name</th>
-                        <th>Team</th>
-                        <th>K</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {kLeaders.map((leader, index) => (
-                        <tr key={index}>
-                            <td>{leader.rank}</td>
-                            <Link to={`/hitter-stats/${leader.person.id}`}>
-                                <img src={`https://content.mlb.com/images/headshots/current/60x60/${leader.person.id}.png`} alt="player" style={{ marginRight: "1rem" }} />
-                                <td>{leader.person.fullName}</td>
-                            </Link>
-                            <td>
-                                {leader.team ? (
-                                    <Link to={`/team-pitchers/${leader.team.id}`}>
-                                        <img src={`https://www.mlbstatic.com/team-logos/${leader.team.id}.svg`} alt={leader.team.id} width="20" height="20" style={{ marginRight: "0.5rem" }} />
-                                        {leader.team.abbreviation}
-                                    </Link>
-                                ) : (
-                                    "N/A"
-                                )}
-                            </td>
-                            <td>{leader.value}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-            <h1>ERA Leaders</h1>
-            <table>
-                <thead>
-                    <tr>
-                        <th>Rank</th>
-                        <th>Player Name</th>
-                        <th>Team</th>
-                        <th>ERA</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    {eraLeaders.map((leader, index) => (
-                        <tr key={index}>
-                            <td>{leader.rank}</td>
-                            <Link to={`/hitter-stats/${leader.person.id}`}>
-                                <img src={`https://content.mlb.com/images/headshots/current/60x60/${leader.person.id}.png`} alt="player" style={{ marginRight: "1rem" }} />
-                                <td>{leader.person.fullName}</td>
-                            </Link>
-                            <td>
-                                {leader.team ? (
-                                    <Link to={`/team-pitchers/${leader.team.id}`}>
-                                        <img src={`https://www.mlbstatic.com/team-logos/${leader.team.id}.svg`} alt={leader.team.id} width="20" height="20" style={{ marginRight: "0.5rem" }} />
-                                        {leader.team.abbreviation}
-                                    </Link>
-                                ) : (
-                                    "N/A"
-                                )}
-                            </td>
-                            <td>{leader.value}</td>
-                        </tr>
-                    ))}
-                </tbody>
-            </table>
-            <h1>AVG Leaders</h1>
-            <table>
+            <table style={{ display: "inline-block", marginRight: "20px", marginTop: "3%" }}>
                 <thead>
                     <tr>
                         <th>Rank</th>
@@ -262,8 +166,142 @@ const Leaderboard = () => {
                     ))}
                 </tbody>
             </table>
-            <h1>Saves Leaders</h1>
-            <table>
+            </div>
+            <div style={{ display: "flex" }}>
+            <table style={{ display: "inline-block", marginRight: "20px", marginTop: "3%" }}>
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Player Name</th>
+                        <th>Team</th>
+                        <th>RBI</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {rbiLeaders.map((leader, index) => (
+                        <tr key={index}>
+                            <td>{leader.rank}</td>
+                            <Link to={`/hitter-stats/${leader.person.id}`}>
+                                <img src={`https://content.mlb.com/images/headshots/current/60x60/${leader.person.id}.png`} alt="player" style={{ marginRight: "1rem" }} />
+                                <td>{leader.person.fullName}</td>
+                            </Link>
+                            <td>
+                                {leader.team ? (
+                                    <Link to={`/team-pitchers/${leader.team.id}`}>
+                                        <img src={`https://www.mlbstatic.com/team-logos/${leader.team.id}.svg`} alt={leader.team.id} width="20" height="20" style={{ marginRight: "0.5rem" }} />
+                                        {leader.team.abbreviation}
+                                    </Link>
+                                ) : (
+                                    "N/A"
+                                )}
+                            </td>
+                            <td>{leader.value}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+            {/* add one more stat */}
+            <table style={{ display: "inline-block", marginRight: "20px", marginTop: "3%" }}>
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Player Name</th>
+                        <th>Team</th>
+                        <th>OPS</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {opsLeaders.map((leader, index) => (
+                        <tr key={index}>
+                            <td>{leader.rank}</td>
+                            <Link to={`/hitter-stats/${leader.person.id}`}>
+                                <img src={`https://content.mlb.com/images/headshots/current/60x60/${leader.person.id}.png`} alt="player" style={{ marginRight: "1rem" }} />
+                                <td>{leader.person.fullName}</td>
+                            </Link>
+                            <td>
+                                {leader.team ? (
+                                    <Link to={`/team-pitchers/${leader.team.id}`}>
+                                        <img src={`https://www.mlbstatic.com/team-logos/${leader.team.id}.svg`} alt={leader.team.id} width="20" height="20" style={{ marginRight: "0.5rem" }} />
+                                        {leader.team.abbreviation}
+                                    </Link>
+                                ) : (
+                                    "N/A"
+                                )}
+                            </td>
+                            <td>{leader.value}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+            </div>
+            <div style={{ display: "flex" }}>
+            <table style={{ display: "inline-block", marginRight: "20px", marginTop: "3%" }}>
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Player Name</th>
+                        <th>Team</th>
+                        <th>K</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {kLeaders.map((leader, index) => (
+                        <tr key={index}>
+                            <td>{leader.rank}</td>
+                            <Link to={`/hitter-stats/${leader.person.id}`}>
+                                <img src={`https://content.mlb.com/images/headshots/current/60x60/${leader.person.id}.png`} alt="player" style={{ marginRight: "1rem" }} />
+                                <td>{leader.person.fullName}</td>
+                            </Link>
+                            <td>
+                                {leader.team ? (
+                                    <Link to={`/team-pitchers/${leader.team.id}`}>
+                                        <img src={`https://www.mlbstatic.com/team-logos/${leader.team.id}.svg`} alt={leader.team.id} width="20" height="20" style={{ marginRight: "0.5rem" }} />
+                                        {leader.team.abbreviation}
+                                    </Link>
+                                ) : (
+                                    "N/A"
+                                )}
+                            </td>
+                            <td>{leader.value}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+            <table style={{ display: "inline-block", marginRight: "20px", marginTop: "3%" }}>
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Player Name</th>
+                        <th>Team</th>
+                        <th>ERA</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {eraLeaders.map((leader, index) => (
+                        <tr key={index}>
+                            <td>{leader.rank}</td>
+                            <Link to={`/hitter-stats/${leader.person.id}`}>
+                                <img src={`https://content.mlb.com/images/headshots/current/60x60/${leader.person.id}.png`} alt="player" style={{ marginRight: "1rem" }} />
+                                <td>{leader.person.fullName}</td>
+                            </Link>
+                            <td>
+                                {leader.team ? (
+                                    <Link to={`/team-pitchers/${leader.team.id}`}>
+                                        <img src={`https://www.mlbstatic.com/team-logos/${leader.team.id}.svg`} alt={leader.team.id} width="20" height="20" style={{ marginRight: "0.5rem" }} />
+                                        {leader.team.abbreviation}
+                                    </Link>
+                                ) : (
+                                    "N/A"
+                                )}
+                            </td>
+                            <td>{leader.value}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+            </div>
+            <div style={{ display: "flex" }}>
+            <table style={{ display: "inline-block", marginRight: "20px", marginTop: "3%" }}>
                 <thead>
                     <tr>
                         <th>Rank</th>
@@ -295,6 +333,40 @@ const Leaderboard = () => {
                     ))}
                 </tbody>
             </table>
+        
+        <table style={{ display: "inline-block", marginRight: "20px", marginTop: "3%" }}>
+                <thead>
+                    <tr>
+                        <th>Rank</th>
+                        <th>Player Name</th>
+                        <th>Team</th>
+                        <th>Wins</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {winsLeaders.map((leader, index) => (
+                        <tr key={index}>
+                            <td>{leader.rank}</td>
+                            <Link to={`/hitter-stats/${leader.person.id}`}>
+                                <img src={`https://content.mlb.com/images/headshots/current/60x60/${leader.person.id}.png`} alt="player" style={{ marginRight: "1rem" }} />
+                                <td>{leader.person.fullName}</td>
+                            </Link>
+                            <td>
+                                {leader.team ? (
+                                    <Link to={`/team-pitchers/${leader.team.id}`}>
+                                        <img src={`https://www.mlbstatic.com/team-logos/${leader.team.id}.svg`} alt={leader.team.id} width="20" height="20" style={{ marginRight: "0.5rem" }} />
+                                        {leader.team.abbreviation}
+                                    </Link>
+                                ) : (
+                                    "N/A"
+                                )}
+                            </td>
+                            <td>{leader.value}</td>
+                        </tr>
+                    ))}
+                </tbody>
+            </table>
+        </div>
         </div>
     );
 };

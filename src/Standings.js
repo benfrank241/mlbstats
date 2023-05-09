@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import './Standings.css';
 import { useParams, Link } from "react-router-dom";
-import './PlayerStats.css'
+
 
 const teamAbbreviations = {
     "Arizona Diamondbacks": "ARI",

@@ -9,7 +9,7 @@ const teamDivisions = {
   "Tampa Bay Rays": 0,
   "Toronto Blue Jays": 0,
   "Chicago White Sox": 1,
-  "Cleveland Indians": 1,
+  "Cleveland Guardians": 1,
   "Detroit Tigers": 1,
   "Kansas City Royals": 1,
   "Minnesota Twins": 1,
@@ -53,7 +53,7 @@ const RosterPitchers = () => {
     const fetchData = async () => {
       const response = await axios.get(`http://localhost:5000/roster/${teamId}`);
       setRoster(response.data.roster);
-      // console.log(response.data.roster)
+      console.log(response.data.roster)
     };
 
     fetchData();
