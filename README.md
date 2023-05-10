@@ -16,4 +16,4 @@ You can access the live site at this URL: https://mlbstats.vercel.app/
 2. Run `npm install` to install the front-end dependencies.
 3. Run `npm start` to start the development server.
 
-After following these steps, you should be able to access the app by navigating to `http://localhost:3000` in your web browser. The Flask server will be running on `http://localhost:5000`.
+After following these steps, you should be able to access the app by navigating to `http://localhost:3000` in your web browser. The Flask server will be running on `https://lionfish-app-q5lpr.ondigitalocean.app/`. If you would like to host the server locally, change the routes in each of the fetches to 'http://localhost:5000'

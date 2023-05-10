@@ -50,7 +50,7 @@ function Standings() {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await axios.get('http://localhost:5000/standings/test');
+            const response = await axios.get('https://lionfish-app-q5lpr.ondigitalocean.app/standings/test');
             const data = response.data.records[0].teamRecords; //0-5 changes the divison
             setStandings0(data); // update state with the received data
             const data1 = response.data.records[1].teamRecords; //0-5 changes the divison

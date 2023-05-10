@@ -17,7 +17,7 @@ const Leaderboard = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await axios.get(`http://localhost:5000/leaderboard`);
+            const response = await axios.get(`https://lionfish-app-q5lpr.ondigitalocean.app/leaderboard`);
             setHitsLeaders(response.data.leagueLeaders[0].leaders);
             setHrLeaders(response.data.leagueLeaders[3].leaders);
             setSbLeaders(response.data.leagueLeaders[6].leaders);

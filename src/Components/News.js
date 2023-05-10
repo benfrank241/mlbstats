@@ -8,7 +8,7 @@ class News extends React.Component {
   }
 
   async componentDidMount() {
-    const response = await fetch('http://localhost:5000/news');
+    const response = await fetch('https://lionfish-app-q5lpr.ondigitalocean.app/news');
     const json = await response.json();
     this.setState({ articles: json.articles.slice(0, 4) });
   }

@@ -46,7 +46,7 @@ const PitcherStats = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const response = await axios.get(`http://localhost:5000/player/${playerId}/stats?group=pitching&type=yearByYear`);
+            const response = await axios.get(`https://lionfish-app-q5lpr.ondigitalocean.app/player/${playerId}/stats?group=pitching&type=yearByYear`);
             setPlayer(response.data.people[0]);
             // console.log(response.data.people[0])
         };
@@ -55,7 +55,7 @@ const PitcherStats = () => {
 
     useEffect(() => {
         const fetchCareerData = async () => {
-            const response = await axios.get(`http://localhost:5000/player/${playerId}/career/pitching`);
+            const response = await axios.get(`https://lionfish-app-q5lpr.ondigitalocean.app/player/${playerId}/career/pitching`);
             setCareerStats(response.data.people[0]);
             console.log(response.data.people[0])
         };

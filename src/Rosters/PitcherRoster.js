@@ -51,7 +51,7 @@ const RosterPitchers = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get(`http://localhost:5000/roster/${teamId}`);
+      const response = await axios.get(`https://lionfish-app-q5lpr.ondigitalocean.app/roster/${teamId}`);
       setRoster(response.data.roster);
       console.log(response.data.roster)
     };
@@ -61,7 +61,7 @@ const RosterPitchers = () => {
 
   useEffect(() => {
     const fetchData = async () => {
-      const response = await axios.get(`http://localhost:5000/standings/test`);
+      const response = await axios.get(`https://lionfish-app-q5lpr.ondigitalocean.app/standings/test`);
       const teamName = roster[0].person.stats[0].splits[0].team.name;
       const division = teamDivisions[teamName];
       console.log(division)
