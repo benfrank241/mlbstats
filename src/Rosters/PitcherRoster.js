@@ -128,7 +128,7 @@ const RosterPitchers = () => {
                 {getOrdinalSuffix(standings.divisionRank)} in {divisionMap[teamDivisions[teamName]]}
               </span>
               <span style={{ fontWeight: "bold" }}>
-                {standings.wins}-{standings.losses} ({standings.winningPercentage}) • {standings.sportGamesBack} GB
+                {standings.wins}-{standings.losses} ({standings.winningPercentage}) • {standings.divisionGamesBack} GB
               </span>
             </div>
             </div>

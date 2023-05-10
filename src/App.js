@@ -1,14 +1,14 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Routes} from 'react-router-dom';
-import HitterStats from "./HitterStats";
-import PitcherStats from "./PitcherStats";
-import Standings from "./Standings";
-import News from "./News";
-import HomePage from "./HomePage";
-import NavBar from "./NavBar";
-import RosterPitchers from "./PitcherRoster";
-import RosterHitters from "./HitterRoster";
-import Leaderboard from "./Leaderboard";
+import HitterStats from "./Players/HitterStats";
+import PitcherStats from "./Players/PitcherStats";
+import Standings from "./Components/Standings";
+import News from "./Components/News";
+import HomePage from "./Components/HomePage";
+import NavBar from "./Components/NavBar";
+import RosterPitchers from "./Rosters/PitcherRoster";
+import RosterHitters from "./Rosters/HitterRoster";
+import Leaderboard from "./Components/Leaderboard";
 import "./PlayerStats.css";
 
 function App() {

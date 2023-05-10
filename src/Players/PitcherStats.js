@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import "./PlayerStats.css"
+import "../PlayerStats.css"
 import { useParams, Link } from "react-router-dom";
 
 const teamAbbreviations = {

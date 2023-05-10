@@ -16,7 +16,7 @@ class News extends React.Component {
   render() {
     return (
       <div className="news-wrapper">
-        <h1>News</h1>
+        <h1 style={{marginLeft: "3rem"}}>News</h1>
       <div className="news-container">
         {this.state.articles.map((article) => (
           <div className="news-article" key={article.url}>

@@ -23,7 +23,6 @@
 .standings-table th:first-child,
 .standings-table td:first-child {
   width: 25%;
-  text-align: left;
 }
 
 .standings-table th:not(:first-child),

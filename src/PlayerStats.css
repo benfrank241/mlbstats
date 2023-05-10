@@ -32,7 +32,6 @@ table {
 th {
   background-color: var(--background-secondary);
   color: white;
-  font-weight: normal;
   text-align: center;
   padding: 0.5rem;
 }
