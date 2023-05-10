@@ -12,6 +12,7 @@ const teamAbbreviations = {
     "Chicago White Sox": "CWS",
     "Cincinnati Reds": "CIN",
     "Cleveland Guardians": "CLE",
+    "Cleveland Indians": "CLE",
     "Colorado Rockies": "COL",
     "Detroit Tigers": "DET",
     "Houston Astros": "HOU",

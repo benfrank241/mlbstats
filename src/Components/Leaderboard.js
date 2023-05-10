@@ -64,7 +64,7 @@ const Leaderboard = () => {
                                 </Link>
                                 <td>
                                     {leader.team ? (
-                                        <Link to={`/team-pitchers/${leader.team.id}`}>
+                                        <Link to={`/team-hitters/${leader.team.id}`}>
                                             <img src={`https://www.mlbstatic.com/team-logos/${leader.team.id}.svg`} alt={leader.team.id} width="20" height="20" style={{ marginRight: "0.5rem" }} />
                                             {leader.team.abbreviation}
                                         </Link>
@@ -96,7 +96,7 @@ const Leaderboard = () => {
                                 </Link>
                                 <td>
                                     {leader.team ? (
-                                        <Link to={`/team-pitchers/${leader.team.id}`}>
+                                        <Link to={`/team-hitters/${leader.team.id}`}>
                                             <img src={`https://www.mlbstatic.com/team-logos/${leader.team.id}.svg`} alt={leader.team.id} width="20" height="20" style={{ marginRight: "0.5rem" }} />
                                             {leader.team.abbreviation}
                                         </Link>
@@ -139,7 +139,7 @@ const Leaderboard = () => {
                                 </Link>
                                 <td>
                                     {leader.team ? (
-                                        <Link to={`/team-pitchers/${leader.team.id}`}>
+                                        <Link to={`/team-hitters/${leader.team.id}`}>
                                             <img src={`https://www.mlbstatic.com/team-logos/${leader.team.id}.svg`} alt={leader.team.id} width="20" height="20" style={{ marginRight: "0.5rem" }} />
                                             {leader.team.abbreviation}
                                         </Link>
@@ -171,7 +171,7 @@ const Leaderboard = () => {
                                 </Link>
                                 <td>
                                     {leader.team ? (
-                                        <Link to={`/team-pitchers/${leader.team.id}`}>
+                                        <Link to={`/team-hitters/${leader.team.id}`}>
                                             <img src={`https://www.mlbstatic.com/team-logos/${leader.team.id}.svg`} alt={leader.team.id} width="20" height="20" style={{ marginRight: "0.5rem" }} />
                                             {leader.team.abbreviation}
                                         </Link>
@@ -213,7 +213,7 @@ const Leaderboard = () => {
                                 </Link>
                                 <td>
                                     {leader.team ? (
-                                        <Link to={`/team-pitchers/${leader.team.id}`}>
+                                        <Link to={`/team-hitters/${leader.team.id}`}>
                                             <img src={`https://www.mlbstatic.com/team-logos/${leader.team.id}.svg`} alt={leader.team.id} width="20" height="20" style={{ marginRight: "0.5rem" }} />
                                             {leader.team.abbreviation}
                                         </Link>
@@ -245,7 +245,7 @@ const Leaderboard = () => {
                                 </Link>
                                 <td>
                                     {leader.team ? (
-                                        <Link to={`/team-pitchers/${leader.team.id}`}>
+                                        <Link to={`/team-hitters/${leader.team.id}`}>
                                             <img src={`https://www.mlbstatic.com/team-logos/${leader.team.id}.svg`} alt={leader.team.id} width="20" height="20" style={{ marginRight: "0.5rem" }} />
                                             {leader.team.abbreviation}
                                         </Link>
@@ -281,7 +281,7 @@ const Leaderboard = () => {
                         {kLeaders.map((leader, index) => (
                             <tr key={index}>
                                 <td>{leader.rank}</td>
-                                <Link to={`/hitter-stats/${leader.person.id}`}>
+                                <Link to={`/pitcher-stats/${leader.person.id}`}>
                                     <img src={`https://content.mlb.com/images/headshots/current/60x60/${leader.person.id}.png`} alt="player" style={{ marginRight: "1rem" }} />
                                     <td>{leader.person.fullName}</td>
                                 </Link>
@@ -313,7 +313,7 @@ const Leaderboard = () => {
                         {eraLeaders.map((leader, index) => (
                             <tr key={index}>
                                 <td>{leader.rank}</td>
-                                <Link to={`/hitter-stats/${leader.person.id}`}>
+                                <Link to={`/pitcher-stats/${leader.person.id}`}>
                                     <img src={`https://content.mlb.com/images/headshots/current/60x60/${leader.person.id}.png`} alt="player" style={{ marginRight: "1rem" }} />
                                     <td>{leader.person.fullName}</td>
                                 </Link>
@@ -355,7 +355,7 @@ const Leaderboard = () => {
                         {savesLeaders.map((leader, index) => (
                             <tr key={index}>
                                 <td>{leader.rank}</td>
-                                <Link to={`/hitter-stats/${leader.person.id}`}>
+                                <Link to={`/pitcher-stats/${leader.person.id}`}>
                                     <img src={`https://content.mlb.com/images/headshots/current/60x60/${leader.person.id}.png`} alt="player" style={{ marginRight: "1rem" }} />
                                     <td>{leader.person.fullName}</td>
                                 </Link>
@@ -388,7 +388,7 @@ const Leaderboard = () => {
                         {winsLeaders.map((leader, index) => (
                             <tr key={index}>
                                 <td>{leader.rank}</td>
-                                <Link to={`/hitter-stats/${leader.person.id}`}>
+                                <Link to={`/pitcher-stats/${leader.person.id}`}>
                                     <img src={`https://content.mlb.com/images/headshots/current/60x60/${leader.person.id}.png`} alt="player" style={{ marginRight: "1rem" }} />
                                     <td>{leader.person.fullName}</td>
                                 </Link>
