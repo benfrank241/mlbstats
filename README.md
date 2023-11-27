@@ -1,6 +1,6 @@
 ## Running the App
 
-You can access the live site at this URL: https://mlbstats.vercel.app/
+You can access the live site at this URL: https://mlbstats.vercel.app/ (no longer supported)
 
 ### Prerequisites
 - Python 3.x
